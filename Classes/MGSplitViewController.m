@@ -240,11 +240,11 @@
 	float width = fullScreenRect.size.width;
 	float height = fullScreenRect.size.height;
 	
-	// Correct for orientation.
-	if (UIInterfaceOrientationIsLandscape(theOrientation)) {
-		width = height;
-		height = fullScreenRect.size.width;
-	}
+    // Correct for orientation.
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending && UIInterfaceOrientationIsLandscape(theOrientation)) {
+        width = height;
+        height = fullScreenRect.size.width;
+    }
 	
 	// Account for status bar, which always subtracts from the height (since it's always at the top of the screen).
 	height -= statusBarHeight;
